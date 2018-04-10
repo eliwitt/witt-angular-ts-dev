@@ -1,0 +1,35 @@
+<div class="panel panel-primary" >
+  <div class="panel-heading">
+    {{pageTitle}}
+  </div>
+
+  <!-- Page body -->
+  <div class='panel-body'>
+      <div class="table-responsive">
+          <table class='table' *ngIf='attnitems && attnitems.length'>
+              <thead>
+                  <tr>
+                      <th>Mfg Order</th>
+                      <th>Sales Order</th>
+                      <th>CSR</th>
+                      <th>Date Added</th>
+                      <th>Issue</th>
+                      <th>Response</th>
+                      <th>Updated</th>
+                  </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor='let attnitem of attnitems'>
+                  <td>{{ attnitem.attnMo}}</td>
+                  <td>{{ attnitem.attnSo}}</td>
+                  <td>{{ attnitem.attnCsr}}</td>
+                  <td>{{ attnitem.attnAddDate}}</td>
+                  <td>{{ attnitem.attnIssue}}</td>
+                  <td>{{ attnitem.attnResponse}}</td>
+                  <td>{{ attnitem.attnUpDate}}</td>
+                </tr>
+              </tbody>
+            </table>
+        </div>
+    </div>
+</div>

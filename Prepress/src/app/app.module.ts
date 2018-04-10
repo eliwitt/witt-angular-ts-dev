@@ -3,11 +3,13 @@ import { NgModule } from '@angular/core';
 
 
 import { AppComponent } from './app.component';
+import { AttentionlistComponent } from './attention/attention-list.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    AttentionlistComponent
   ],
   imports: [
     BrowserModule
