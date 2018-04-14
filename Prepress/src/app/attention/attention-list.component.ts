@@ -1,29 +1,28 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
+
+/* custom components */
+import { IAttnList } from './attnlist';
+import { AttnListService } from './attnlist.service';
 
 @Component({
   selector: 'pm-attention',
-  templateUrl: './attention-list.component.html'
+  moduleId: module.id,
+  templateUrl: 'attention-list.component.html',
+  styleUrls: ['attention-list.component.css']
 })
-export class AttentionlistComponent {
+export class AttentionlistComponent implements OnInit {
   pageTitle = 'Attention List';
-  attnitems: any[] = [
-    {
-      "attnMo": "470622",
-      "attnSo": "10140222",
-      "attnCsr": "Vicki",
-      "attnAddDate": "09/04/15",
-      "attnIssue": "wrong size",
-      "attnResponse": "notified client twice",
-      "attnUpDate": "04/03/18"
-    },
-    {
-      "attnMo": "470642",
-      "attnSo": "10140227",
-      "attnCsr": "Steve",
-      "attnAddDate": "09/04/14",
-      "attnIssue": "Wrong material",
-      "attnResponse": "new response",
-      "attnUpDate": "04/03/18"
-    }
-  ];
+  attnitems: IAttnList[];
+  errorMessage: string;
+
+  constructor(private _attnService: AttnListService) {}
+
+  ngOnInit(): void {
+    console.log("In OnInit");
+    this._attnService.getAttnItems()
+      .subscribe(attnitems => this.attnitems = attnitems,
+      error => this.errorMessage = <any>error );
+    console.log(this.attnitems);
+  }
+
 }
